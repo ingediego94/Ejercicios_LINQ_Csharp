@@ -1,0 +1,14 @@
+/home/diego/Documents/diego_dev/practicaLinq/bin/Debug/net8.0/practicaLinq
+/home/diego/Documents/diego_dev/practicaLinq/bin/Debug/net8.0/practicaLinq.deps.json
+/home/diego/Documents/diego_dev/practicaLinq/bin/Debug/net8.0/practicaLinq.runtimeconfig.json
+/home/diego/Documents/diego_dev/practicaLinq/bin/Debug/net8.0/practicaLinq.dll
+/home/diego/Documents/diego_dev/practicaLinq/bin/Debug/net8.0/practicaLinq.pdb
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.GeneratedMSBuildEditorConfig.editorconfig
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.AssemblyInfoInputs.cache
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.AssemblyInfo.cs
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.csproj.CoreCompileInputs.cache
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.dll
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/refint/practicaLinq.dll
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.pdb
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/practicaLinq.genruntimeconfig.cache
+/home/diego/Documents/diego_dev/practicaLinq/obj/Debug/net8.0/ref/practicaLinq.dll
