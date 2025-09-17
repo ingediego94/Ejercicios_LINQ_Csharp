@@ -1,4 +1,5 @@
-﻿using practicaLinq.Models;
+﻿using System.Diagnostics.CodeAnalysis;
+using practicaLinq.Models;
 
 namespace practicaLinq;
 
@@ -10,12 +11,12 @@ public class Program
         // coleccion students
         var students = new List<Student>
         {
-            new Student { id = 1, name = "Diego Vallejo", age = 28 },
-            new Student { id = 2, name = "Davis Zapata", age = 22 },
-            new Student { id = 3, name = "John Willis", age = 20 },
-            new Student { id = 4, name = "Edd Rave", age = 19 },
-            new Student { id = 5, name = "Anne Wenzel", age = 31 },
-            new Student { id = 6, name = "Klauss Stauffemberg", age = 32 },
+            new Student { id = 1, name = "Sara", lastname = "Vallejo", age = 28 },
+            new Student { id = 2, name = "Davis", lastname = "Zapata", age = 22 },
+            new Student { id = 3, name = "John", lastname = "Willis", age = 20 },
+            new Student { id = 4, name = "Edd", lastname = "Rave", age = 19 },
+            new Student { id = 5, name = "Anne", lastname = "Wenzel", age = 31 },
+            new Student { id = 6, name = "Klauss", lastname = "Klauss", age = 32 },
         };
         
         
@@ -52,7 +53,7 @@ public class Program
             select s;
         foreach (var order in students)
         {
-            Console.WriteLine($"La edad de {order.name} es {order.age}");
+            Console.WriteLine($"La edad de {order.name} {order.lastname} es {order.age}");
         }
 
         Console.WriteLine("--------------------------------------");
@@ -89,19 +90,112 @@ public class Program
 
 
         // Ejercicio 4: Contar matrículas
+        var query_E4 = enrollments.Count();
+        Console.WriteLine($"La cantidad de matriculas es: {query_E4}");
+
+        Console.WriteLine("--------------------------------------");
         
         
-        
-        
-        
-        
+
         // Ejercicio 5: Join entre matrículas y estudiantes
+        var query_E5 = from e in enrollments
+            join s in students
+                on e.studentId equals s.id
+                orderby e.grade descending 
+            select new { IdEst = e.studentId, 
+                nombre_completo = s.name + " " + s.lastname,
+                edad = s.age, 
+                nota = e.grade
+            };
+        
+        Console.WriteLine("Notas por estudiante:");
+        
+        foreach (var order in query_E5)
+        {
+            Console.WriteLine($"{order}");
+        }
+
+        
+        Console.WriteLine("--------------------------------------");
+
+
         // Ejercicio 6: Join triple (estudiante + curso + matrícula)
+        var query_E6 = from e in enrollments
+            join s in students
+                on e.studentId equals s.id
+            join c in courses
+                on e.courseId equals c.id
+                orderby e.grade descending 
+            select new
+            {
+                fullName = s.name + " " + s.lastname,
+                s.age,
+                c.title,
+                e.grade
+            };
+
+        Console.WriteLine("Full Name       Age   Signature    Grade");
+        
+        foreach (var order in query_E6)
+        {
+            Console.WriteLine($"{order.fullName,-14} {order.age,3} {order.title,-15} {order.grade,5}");
+        }
+        
+        Console.WriteLine("--------------------------------------");
+        
+        
+        
         // Ejercicio 8: Validaciones con LINQ (All, Any, Contains)
+        
+        // 8.1) Validar si en el listado de estudiantes hay algún 'Diego'.
+        var query_E8_1 = students.Select(s => s.name);
+        bool nameValidation = query_E8_1.Contains("Diego");
 
+        Console.WriteLine($"El listado de estudiantes tiene algún 'Diego' ?  R/ {nameValidation}"  );
 
+        Console.WriteLine("--------------------------------------");
+        
+        
+        
+        // 8.2) ¿Hay algún estudiante mayor de 30 años?
+        bool query_E8_2 = students.Any(s => s.age > 25);
+        Console.WriteLine($"Hay algún estudiante mayor de 25 años?  R/ {query_E8_2}");
+        
+        Console.WriteLine("--------------------------------------");
+        
+        
+        
+        // 8.3) ¿Algún curso tiene más de 4 créditos?
+        bool query_E8_3 = courses.Any(c => c.credits >= 6);
+        Console.WriteLine($"Hay algún curso con 6 o mas creditos?  R/ {query_E8_3}");
 
-
+        Console.WriteLine("--------------------------------------");
+        
+        
+        
+        // 8.4) ¿Algún estudiante se llama "Anne"?
+        string searchedStudent = "Anne".ToLower();
+        bool query_E8_4 = students.Any(s => s.name.ToLower() == searchedStudent);
+        Console.WriteLine($"¿Algún estudiante se llama 'Anne' ?   R/ {query_E8_4}");
+        
+        Console.WriteLine("--------------------------------------");
+        
+        
+        
+        // 8.5) ¿Todos los estudiantes son mayores de 18?
+        bool maj_18 = students.All(s => s.age >= 18);
+        Console.WriteLine($"¿Todos los estudiantes son mayores de 18?  R/ {maj_18}");
+        
+        
+        Console.WriteLine("--------------------------------------");
+        
+        // 8.6) ¿Todos los cursos tienen mas de 2 créditos?
+        bool twoCredits = courses.All(c => c.credits > 2);
+        Console.WriteLine($"¿Todos los cursos tienen al menos 2 créditos?  R/ {twoCredits}");
+        
+        
+        
+        Console.WriteLine("--------------------------------------");
 
 
     }
