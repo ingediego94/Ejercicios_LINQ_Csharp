@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = practicaLinq
-build_property.ProjectDir = F:\Programacion\RIWI\Ejercicios_LINQ_Csharp\
+build_property.ProjectDir = /home/diego/Documents/diego_dev/Ejercicios_LINQ_Csharp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

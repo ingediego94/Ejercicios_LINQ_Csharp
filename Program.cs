@@ -197,6 +197,31 @@ public class Program
         
         Console.WriteLine("--------------------------------------");
 
+        
+        
+        // 9) Mostrar las notas de las materias en las que esta matriculado cada estudiante. 
+        // Mostrar también el fullname del estudiante con su respectiva nota para cada materia.
+        
+        var query_E9 = from e in enrollments
+            join s in students
+                on e.id equals s.id
+            join c in courses
+                on e.id equals c.id
+            where s.name == "Sara" || s.name == "Edd" || s.name == "John"
+            orderby e.grade descending
+            select new
+            {
+                c.title, 
+                fullName = s.name + " " + s.lastname, 
+                e.grade
+            };
+
+        foreach (var order in query_E9)
+        {
+            Console.WriteLine($"{order.title,-12} {order.fullName,-18} {order.grade}");
+        }
+
+
 
     }
 }
